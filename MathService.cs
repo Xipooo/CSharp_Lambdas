@@ -6,10 +6,10 @@ namespace CSharp_Lambdas
     public class MathService
     {
         //public event EventHandler<MathPerformedEventArgs> MathPerformed;
-        public delegate void MathPerformedHandler(double result);
+        public Action<double> MathPerformed;
         public delegate double CalculationHandler(double value1, double value2);
-        public event MathPerformedHandler MathPerformed;
-        public void CalculateNumbers(double value1, double value2, CalculationHandler calculation)
+
+        public void CalculateNumbers(double value1, double value2, Func<double, double, double> calculation)
         {
             Timer timer = new Timer(5000);
             //MathPerformed(this, new MathPerformedEventArgs{ Result = value1 * value2});
